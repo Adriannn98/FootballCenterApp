@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <table class="table">
+        <tr>
+
+            <th>Name</th>
+            <th>Participants</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for type_of_game in type_of_games %}
+            <tr class="{% cycle 'table-light' 'table-secondary'%}">
+
+                <td><a href="{% url 'type_of_game_detail' type_of_game.id %}">{{ type_of_game.name }}</a></td>
+                <td>{{ type_of_game.number_of_participants }}</td>
+                <td><a class="btn btn-sm btn-info" href="{% url 'modify_tog' type_of_game.id %}">Modify</a></td>
+                <td><a class="btn btn-danger" href="{% url 'delete_type_of_game' type_of_game.id %}">Delete</a></td>
+
+            </tr>
+        {% endfor %}
+    </table>
+    <td><a class='btn btn-success' href="{% url 'add_type_of_game'  %}">Add type of game</a></td>
+
+{% endblock %}

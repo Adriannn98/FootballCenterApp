@@ -1,0 +1,39 @@
+{#{% extends 'base.html' %}#}
+{#{% block content %}#}
+{##}
+{#<table class="table">#}
+{#       <tr>#}
+{#           <th>Name</th>#}
+{#           <th></th>#}
+{#       </tr>#}
+{##}
+{#    {% for club in clubs %}#}
+{#        <tr>#}
+{#            <td>{{ club.name }}</td>#}
+{#            <form method="post">#}
+{#                {% csrf_token %}#}
+{#                <input type="hidden" name="club_id" value="{{ club.id }}">#}
+{#                <td><input type="submit"></td>#}
+{#            </form>#}
+{#        </tr>#}
+{#    {% endfor %}#}
+{##}
+{#</table>#}
+{##}
+{#{% endblock %}#}
+{% extends 'base.html' %}
+{% block content %}
+    <div class="card w-25">
+        <div class="card-body">
+            {% for club in clubs %}
+                <li>{{ club.name }}
+                    <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="club_id" value="{{ club.id }}">
+                    <input type="submit">
+                    </form>
+                </li>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

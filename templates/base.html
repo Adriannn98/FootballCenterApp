@@ -1,0 +1,48 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="{% static 'bootstrap-5.2.2-dist/css/bootstrap.css' %}" rel="stylesheet" >
+    <link href="{% static 'my_nav_bar.css' %}" rel="stylesheet" >
+</head>
+<body>
+{#<div class="topnav">#}
+{#    <a>#}
+{#       <img src="images/question.png"/>#}
+{#     </a>#}
+{#</div>#}
+<div class="topnav">
+    {%  if user.is_authenticated %}
+{#        <a class="bg-primary" href="{% url 'select_favourite_club' %}">Select club</a>#}
+{#        <a class="bg-primary" href="{% url 'my_favourite_club' %}">My favourite club</a>#}
+        <a class="bg-gradient" href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a class="bg-success" href="{% url 'create_user' %}"> SING UP</a>
+        <a class="bg-gradient" href="{% url 'login' %}">LOG IN</a>
+    {%  endif %}
+{#    <a class="bg-success" href="{% url 'player_list' %}">List of players</a>#}
+    <a class="bg-success" href="{% url 'nationality_list' %}">List of nationalities</a>
+    <a class="bg-success" href="{% url 'type_of_game_list' %}">List of games</a>
+    {% if user.is_superuser %}
+        <a class="bg-secondary" href="{% url 'add_player_in_club' %}">Add player to club</a>
+        <a class="bg-secondary" href="{% url 'add_club' %}">Add club</a>
+        <a class="bg-secondary" href="{% url 'add_nationality' %}">Add nationality</a>
+        <a class="bg-secondary" href="{% url 'add_player' %}">Add player</a>
+{#        <a class="bg-secondary" href="{% url 'add_type_of_game' %}">Add type of game</a>#}
+    {% endif %}
+</div>
+<div class="container">
+    {% block content %}
+    <h1>Football Center</h1>
+    {% endblock %}
+
+</div>
+
+<script src="{% static 'bootstrap-5.2.2-dist/js/bootstrap.js' %}" ></script>
+</body>
+</html>

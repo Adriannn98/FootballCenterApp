@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Birth</th>
+            <th>Height</th>
+            <th>Leg</th>
+            <th>Sponsor</th>
+            <th>Value</th>
+            <th>Nationality</th>
+            <th>Club</th>
+            <th>Modify</th>
+        </tr>
+
+            <tr class="{% cycle 'table-light' 'table-secondary'%}">
+
+                <td>{{ player.name }}</td>
+                <td>{{ player.surname }}</td>
+                <td>{{ player.dob }} ({{ player.calculate_age }})</td>
+                <td>{{ player.height }}</td>
+                <td>{{ player.get_leg_display }}</td>
+                <td>{{ player.sponsor }}</td>
+                <td>{{ player.value }} mln €</td>
+                <td>{{ player.nationality.name }}</td>
+                <td>{{ player.active_club.name }}</td>
+                <td><a class="btn btn-sm btn-info" href="{% url 'modify_player' player.id %}">Modify</a></td>
+            </tr>
+
+    </table>
+{% endblock %}

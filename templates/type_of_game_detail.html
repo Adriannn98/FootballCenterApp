@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p></p>
+    <a class='btn btn-success' href="{% url 'add_club_to_type_of_game' type_of_game.id %}">Add clubs</a>
+
+    <h1>{{ type_of_game.name }}</h1>
+
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Number of players</th>
+            <th></th>
+
+        </tr>
+        {% for club in clubs %}
+            <tr class="{% cycle 'table-light' 'table-secondary'%}">
+
+                <td><a href="{% url 'club_detail' club.id %}">{{ club.name }}</a></td>
+                <td>{{ club.country }}</td>
+                <td>{{ club.number_of_players }}</td>
+                <td><a class="btn btn-danger" href="{% url 'delete_club_from_type_of_game' type_of_game.id club.id %}">Delete</a></td>
+            </tr>
+        {%  endfor %}
+    </table>
+{% endblock %}

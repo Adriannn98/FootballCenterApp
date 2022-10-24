@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Club</th>
+        </tr>
+        {% for player in players %}
+            <tr class="{% cycle 'table-light' 'table-secondary'%}">
+
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{% url 'player_detail' player.id %}">{{ player.name }} {{ player.surname }}</a></td>
+                <td>{{ player.club }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

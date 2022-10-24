@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<br>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+
+            <p>Are you sure you want to delete "{{ type_of_game }}"?</p>
+
+            <form action="{% url 'delete_type_of_game' type_of_game.id%}" method="POST">
+                {% csrf_token %}
+                <input type="submit" name="Confirm">
+                <a href="{% url 'type_of_game_list' %} ">Cancel</a>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

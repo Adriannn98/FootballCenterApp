@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>WorldCup</th>
+        </tr>
+        {% for nationality in nationalities %}
+            <tr class="{% cycle 'table-light' 'table-secondary'%}">
+
+                <td>{{ forloop.counter }}</td>
+                <td>{{ nationality.name }}</td>
+                <td>{{ nationality.world_cup }}</td>
+{#                <td><a class="btn btn-info" href="{% url 'create_game_for_hero' hero.id %}">Nowa Gra</a></td>#}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

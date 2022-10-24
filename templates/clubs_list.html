@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Country</th>
+            <th>League</th>
+            <th>Number of players</th>
+            <th>Average age</th>
+        </tr>
+        {% for club in clubs %}
+            <tr class="{% cycle 'table-light' 'table-secondary'%}">
+
+                <td>{{ forloop.counter }}</td>
+                <td>{{ club.name }}</td>
+                <td>{{ club.country }}</td>
+                <td>{{ club.name_of_league }}</td>
+                <td>{{ club.number_of_players }}</td>
+                <td>{{ club.average_age }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
